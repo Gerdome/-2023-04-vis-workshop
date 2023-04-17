@@ -6,7 +6,7 @@ const axios = require('axios');
  * @param {string} accessToken 
  */
 async function callApi(endpoint, accessToken) {
-
+                    
     const options = {
         headers: {
             Authorization: `Bearer ${accessToken}`
