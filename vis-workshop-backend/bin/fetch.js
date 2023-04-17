@@ -14,14 +14,6 @@ async function callApi(endpoint, accessToken) {
     };
 
     console.log('request made to Verifiable Credentials endpoint at: ' + new Date().toString());
-    /* 
-        try {
-            const response = await axios.post(endpoint, options);
-            return response.data;
-        } catch (error) {
-            console.log(error)
-            return error;
-        } */
 
     let payload = {
         "includeQRCode": true,
@@ -49,15 +41,16 @@ async function callApi(endpoint, accessToken) {
     };
 
     try {
-        const response = await axios.post("https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createIssuanceRequest", {
-            headers: {
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${accessToken}`
-            },
-            body: JSON.stringify(payload),
-        });
+        const response = await axios.post("https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createIssuanceRequest",
+            JSON.stringify(payload),
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`
+                }
+            });
 
-        const result = await response.json();
+        const result = await response.json;
         console.log("Success:", result);
         return response.data;
     } catch (error) {
