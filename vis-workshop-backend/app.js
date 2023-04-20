@@ -1,19 +1,40 @@
 const express = require('express')
+const cors = require('cors')
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const fetch = require('./bin/fetch');
 const auth = require('./bin/auth');
 const app = express()
 const port = 5050
 
-app.get('/request-credential', async (req, res) => {
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+
+app.use(cors(corsOptions))
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.raw());
+
+app.post('/request-credential', async (req, res) => {
+    console.log("JSON: " + JSON.stringify(req));
+    let response;
      try {
         const authResponse = await auth.getToken(auth.tokenRequest);
-        const response = await fetch.callApi(auth.apiConfig.requestUri, authResponse.accessToken);
-        console.log(response);
+        response = await fetch.callApi(auth.apiConfig.requestUri, authResponse.accessToken);
     } catch (error) {
         console.log(error);
+        response = error;
     } 
-    res.send('token');
+    res.send(response);
 })
 
 app.listen(port, () => {

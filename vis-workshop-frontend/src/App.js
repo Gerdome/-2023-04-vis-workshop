@@ -10,11 +10,16 @@ const callback = () => {
 
 async function getCredential() {
   try {
-    const response = await fetch("https://localhost:5050/request-credential", {
-      method: "GET",
+    const response = await fetch("http://localhost:5050/request-credential", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        "firstName": "Conradin",
+        "lastName": "Roffler",
+        "age": 28
+      })
     });
 
     const result = await response.json();
