@@ -2,10 +2,10 @@ const axios = require('axios');
 
 /**
  * Calls the endpoint with authorization bearer token.
- * @param {string} endpoint 
+ * @param {object} props 
  * @param {string} accessToken 
  */
-async function callApi(endpoint, accessToken) {
+async function callApi(props, accessToken) {
                     
     const options = {
         headers: {
@@ -31,11 +31,11 @@ async function callApi(endpoint, accessToken) {
         "type": "VerifiedCredentialExpert",
         "manifest": "https://verifiedid.did.msidentity.com/v1.0/tenants/a9080dcf-8589-4cb6-a2e2-21398dc6c671/verifiableCredentials/contracts/15483301-cfb2-a101-4683-52b0bc4b7eac/manifest",
         "claims": {
-            "given_name": "Conradin",
-            "family_name": "Roffler"
+            "given_name": props.firstName,
+            "family_name": props.lastName
         },
         "pin": {
-            "value": "3539",
+            "value": props.pin,
             "length": 4
         }
     };

@@ -20,16 +20,13 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-// app.use(bodyParser.raw());
+app.use(bodyParser.json());
 
 app.post('/request-credential', async (req, res) => {
-    console.log("JSON: " + JSON.stringify(req));
     let response;
      try {
         const authResponse = await auth.getToken(auth.tokenRequest);
-        response = await fetch.callApi(auth.apiConfig.requestUri, authResponse.accessToken);
+        response = await fetch.callApi(req.body, authResponse.accessToken);
     } catch (error) {
         console.log(error);
         response = error;
