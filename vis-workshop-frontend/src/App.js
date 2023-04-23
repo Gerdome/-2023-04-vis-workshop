@@ -1,106 +1,58 @@
+import HouseIcon from '@mui/icons-material/House';
+import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box } from '@mui/material';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import { TextField, Button, AppBar, Box } from '@mui/material';
-import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Form } from './Form';
+import { Home } from './Home';
+import { Verifier } from './Verifier';
 
 
-const callback = () => {
-  console.log("Callback successful");
-}
+export function ButtonAppBar() {
+  const navigate = useNavigate();
 
-// TODO: Callback erstellen (html tag: success)
-function App() {
   return (
-    <div className="App">
-      <AppBar>
-        <toolbar>
-          <h1>VerifizierBAR</h1>
-        </toolbar>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            onClick={() => navigate("/")}
+          >
+            <HouseIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            VerifizierBAR
+          </Typography>
+          <Button color="inherit">IPT & VIS</Button>
+        </Toolbar>
       </AppBar>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Form />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    </Box>
   );
 }
 
-function Form() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState(null);
-  const [qrCodeString, setQrCodeString] = useState(null);
-  const [pin, setPin] = useState(null);
-
-  async function getCredential() {
-    setPin(Math.floor(1000 + Math.random() * 9000));
-    try {
-      const response = await fetch("http://localhost:5050/request-credential", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          "firstName": firstName,
-          "lastName": lastName,
-          "age": age,
-          "pin": pin
-        })
-      });
-
-      const result = await response.json();
-      setQrCodeString(result.qrCode.split(',')[1]);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
+function App() {
   return (
-    <>
-      <div className="App">
-        <Box height={'100px'} />
-        <form>
-          <TextField
-            style={{ width: "200px", margin: "5px" }}
-            type="text"
-            label="Vorname"
-            variant="outlined"
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-          <br />
-          <TextField
-            style={{ width: "200px", margin: "5px" }}
-            type="text"
-            label="Nachname"
-            variant="outlined"
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-          />
-          <br />
-          <TextField
-            style={{ width: "200px", margin: "5px" }}
-            type="number"
-            label="Alter"
-            variant="outlined"
-            value={age}
-            onChange={(event) => setAge(event.target.value)}
-          />
-          <br />
-
-          <Button style={{ margin: "20px" }} variant="contained" color="primary" onClick={getCredential}>
-            save
-          </Button>
-        </form>
-      </div>
-
-      {qrCodeString ?
-        <div>
-          <img src={`data:image/png;base64,${qrCodeString}`} />
-          <p>{pin}</p>
-        </div> : null}
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <ButtonAppBar />
+        <Box height={'20px'} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/issue" element={<Form />} />
+          <Route path="/verify" element={<Verifier />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
