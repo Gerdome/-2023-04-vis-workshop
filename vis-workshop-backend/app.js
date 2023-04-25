@@ -10,7 +10,7 @@ var issuanceCallbackState = "inactive";
 var verificationCallbackState = "inactive"; 
 var verificationCallbackClaims; 
 
-const whitelist = ["http://localhost:3001"]
+const whitelist = ["http://localhost:3000"]
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -25,13 +25,14 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
+// TODO
 app.post("/request-credential", async (req, res) => {
     endpoint = "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createIssuanceRequest";
     payload = {
         "includeQRCode": true,
         "callback": {
             "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/issuance-callback",
-            "state": "de19cb6b-36c1-45fe-9409-909a51292a9c",
+            "state": ""
         },
         "authority": "did:web:auxiliary.ipt.ch",
         "registration": {
@@ -73,6 +74,7 @@ app.get("/request-credential-state", async (req, res) => {
     });
 })
 
+// TODO
 app.post("/request-verification", async (req, res) => {
     endpoint = "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createPresentationRequest";
     payload = {
@@ -83,10 +85,7 @@ app.post("/request-verification", async (req, res) => {
         },
         "callback": {
             "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/verification-callback",
-            "state": "92d076dd-450a-4247-aa5b-d2e75a1a5d58",
-            "headers": {
-                "api-key": "OPTIONAL API-KEY for CALLBACK EVENTS"
-            }
+            "state": ""
         },
         "requestedCredentials": [
             {
@@ -139,4 +138,8 @@ app.get("/reset", async (req, res) => {
     verificationCallbackState = "inactive"; 
     verificationCallbackClaims = "inactive";
     res.send();
+})
+
+app.get("/ping", async (req, res) => {
+    res.send({"ping": true});
 })
