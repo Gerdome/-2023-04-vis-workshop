@@ -32,6 +32,7 @@ app.post("/request-credential", async (req, res) => {
         "includeQRCode": true,
         "callback": {
             "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/issuance-callback",
+            "state": ""
         },
         "authority": "did:web:auxiliary.ipt.ch",
         "registration": {
