@@ -32,7 +32,7 @@ export function Verifier() {
         });
   
         const result = await response.json();
-        setQrCodeString(result.qrCode.split(',')[1]);
+        setQrCodeString(result.qrCode);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -53,7 +53,7 @@ export function Verifier() {
   
         {qrCodeString && state === "inactive" ?
           <div>
-            <img src={`data:image/png;base64,${qrCodeString}`} />
+            <img src={qrCodeString} />
           </div> : null}
   
         {state === "request_retrieved" ?
