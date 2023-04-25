@@ -1,11 +1,10 @@
+import { Check } from '@mui/icons-material';
 import HouseIcon from '@mui/icons-material/House';
-import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box } from '@mui/material';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Form } from './Form';
@@ -15,6 +14,22 @@ import { Verifier } from './Verifier';
 
 export function ButtonAppBar() {
   const navigate = useNavigate();
+  const [connectedToServer, setConnectedToServer] = useState(false);
+
+
+  useEffect(() => {
+    async function ping() {
+      try {
+        const response = await fetch("http://localhost:5050/ping");
+        const result = await response.json();
+        if (result.ping) setConnectedToServer(true);
+      }
+      catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    ping();
+  }, [])
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -33,7 +48,7 @@ export function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             VerifizierBAR
           </Typography>
-          <Button color="inherit">IPT & VIS</Button>
+            {connectedToServer ? <Check/> : null}
         </Toolbar>
       </AppBar>
     </Box>

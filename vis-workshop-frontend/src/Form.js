@@ -33,6 +33,7 @@ export function Form() {
       await fetch("http://localhost:5050/reset");
     }
   
+    // TODO
     async function getCredential() {
       let pin = Math.floor(1000 + Math.random() * 9000);
       try {
@@ -50,7 +51,7 @@ export function Form() {
         });
   
         const result = await response.json();
-        setQrCodeString(result.qrCode.split(',')[1]);
+        setQrCodeString(result.qrCode);
         setPin(pin);
       } catch (error) {
         console.error("Error:", error);
@@ -96,7 +97,7 @@ export function Form() {
   
         {qrCodeString && state === "inactive" ?
           <div>
-            <img src={`data:image/png;base64,${qrCodeString}`} />
+            <img src={qrCodeString} alt='qrCode' />
           </div> : null}
   
         {state === "request_retrieved" ?
