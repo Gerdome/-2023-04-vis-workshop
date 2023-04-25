@@ -85,10 +85,7 @@ app.post("/request-verification", async (req, res) => {
         },
         "callback": {
             "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/verification-callback",
-            "state": "92d076dd-450a-4247-aa5b-d2e75a1a5d58",
-            "headers": {
-                "api-key": "OPTIONAL API-KEY for CALLBACK EVENTS"
-            }
+            "state": ""
         },
         "requestedCredentials": [
             {
