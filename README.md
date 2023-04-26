@@ -23,9 +23,10 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
 1. `git clone https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console.git`
 2. `git checkout workshop`
 2. Im Frontend Ordner (vis-workshop-frontend): `npm install` & `npm start` => Damit läuft die Frontend App auf `localhost:3000`
-3. Im Backend Ordner (vis-workshop-backend): `.env` file anpassen (Siehe Slides)
+3. Im Backend Ordner (vis-workshop-backend): `.env` file erstellen und anpassen (Siehe Slides)
 
-4. Im Backend Ordner (vis-workshop-backend): `node app.js` => Damit läuft die Backend App auf `localhost:5050`
+4. Im Backend Ordner (vis-workshop-backend): `npm install` & `node app.js` => Damit läuft die Backend App auf `localhost:5050`
+5. Verifiziere das Backend Server lokal läuft: Im beliebigen Browser `localhost:5050/ping` öffnen. Es sollte `{"ping":true}` zurück gegeben werden.
 
 5. Lokaler Backend Server via ngrok im Internet freigeben: `ngrok http 5050` => Wichtig: Die ngrok URL wird im Output der Konsole angezeigt und wird später wieder benötigt
    
