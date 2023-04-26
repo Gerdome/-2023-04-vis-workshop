@@ -59,7 +59,7 @@ Um den Erstellungs-Prozess einer Verifiable ID noch sicherer zu gestalten, kann 
 3. Im Backend im `/request-credential` Endpunkt aus dem Request ausgelesen werden und an die Entra API weitergeben werden
 
 
-Bei Fragen einfach melden :) 
+Viel Spass und bei Fragen einfach jederzeit melden :) 
 
 
 
