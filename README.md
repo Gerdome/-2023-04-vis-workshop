@@ -63,19 +63,9 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
 
 ### Extra Challenge: Füge einen PIN Code Beim ID Erstellen hinzu
 Um den Erstellungs-Prozess einer Verifiable ID noch sicherer zu gestalten, kann eine PIN an die Entra API übergeben werden, die dann innerhalb der Microsoft Authenticator App eingegeben werden muss. Dafür findet ihr im Frontend Projekt bereits eine `pin` Variable, die allerdings noch nicht verwendet wird. Diese muss nun:
-1. Im Frontend innerhalb der `getCredential` Methode als zufällige 4-stellige Zahl erzeugt werden.
-2. Im Frontend dem User angezeigt werden, damit dieser sie später in der Authenticator App eingeben kann.
-3. Im Backend im `/request-credential` Endpunkt aus dem Request ausgelesen werden und an die Entra API weitergeben werden
+1. Im Frontend innerhalb der `getCredential` Methode als zufällige 4-stellige Zahl erzeugt werden und im Body an das Backend übergeben werden
+2. Im Frontend dem User angezeigt werden, damit dieser sie später in der Authenticator App eingeben kann (Achtung: Die Pin soll in der Web App erst angezeigt werden, sobald der Erstellungsprozess mittels der Authenticator App gestartet wurde)
+3. Im Backend im `/request-credential` Endpunkt aus dem Request ausgelesen werden und an die Entra API als Claim weitergeben werden
 
 
-Viel Spass und bei Fragen einfach jederzeit melden :) 
-
-
-
-
-
-### Tipps
-
-		- Endpoint: https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createIssuanceRequest
-		- Callback URL: {ngrok-url}/issuance-callback
-		- Manifest URL: https://verifiedid.did.msidentity.com/v1.0/tenants/a9080dcf-8589-4cb6-a2e2-21398dc6c671/verifiableCredentials/contracts/0c035ed1-2e13-c786-a03a-eee4459541dd/manifest
+Viel Spass und bei Fragen einfach jederzeit melden :)

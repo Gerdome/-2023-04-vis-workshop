@@ -100,7 +100,6 @@ export function Form() {
         {state === "request_retrieved" ?
           <div>
             <CircularProgress />
-            <p>{pin}</p>
           </div>
           : null}
   
