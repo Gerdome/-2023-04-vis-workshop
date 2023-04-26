@@ -20,7 +20,7 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
 
   
 
-1. `git clone https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console.git`
+1. `git clone https://github.com/Gerdome/-2023-04-vis-workshop.git`
 2. `git checkout workshop`
 2. Im Frontend Ordner (vis-workshop-frontend): `npm install` & `npm start` => Damit läuft die Frontend App auf `localhost:3000`
 3. Im Backend Ordner (vis-workshop-backend): `.env` file erstellen und anpassen (Siehe Slides)
