@@ -35,7 +35,7 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
  ## Challenges
 
 ### Erstelle dir deine eigene Verifiable ID 
-1. Vervollständige im Backend Projekt im `app.js` den `/request-credential` Endpunkt indem du den Payload entsprechend der [Issuance API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/issuance-request-api) anpasst:
+1. Vervollständige im Backend Projekt im `app.js` den `/request-credential` Endpunkt, indem du den Payload entsprechend der [Issuance API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/issuance-request-api) anpasst:
     - Endpoint muss auf die Entra Issuance API URL zeigen
     - Callback URL soll auf den bereits implementieren Endpoint im Backend `/issuance-callback` zeigen (Achtung: NGROK URL benötigt)
     - Claims die vom Frontend übergeben werden müssen an die Entra API weitergeleitet werden:
@@ -52,8 +52,9 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
 6. Sicherstellen, dass ID die Informationen anzeigt, die gerade im Formular eingegeben wurden.
 
 ### Verifiziere ausgestellte IDs
-1. Vervollständige im Backend Projekt den `/request-verification` Endpunkt
-	- Payload entsprechend der [Presentation API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/presentation-request-api) anpassen
+1. Vervollständige im Backend Projekt im `app.js` den `/request-verification` Endpunkt, indem du den Payload entsprechend der [Presentation API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/presentation-request-api) anpasst:
+   - Endpoint muss auf die Entra Presentation API URL zeigen
+   - Callback URL soll auf den bereits implementieren Endpoint im Backend `/verification-callback` zeigen (Achtung: NGROK URL benötigt)
 2. In der Web App über das Home Symbol wieder zur Startseite navigieren
 3. `Verify ID` Button klicken
 4. `Verify Some Credential` Button klicken

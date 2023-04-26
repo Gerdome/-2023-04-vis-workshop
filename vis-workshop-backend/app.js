@@ -70,7 +70,7 @@ app.get("/request-credential-state", async (req, res) => {
 
 // TODO
 app.post("/request-verification", async (req, res) => {
-    endpoint = "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createPresentationRequest";
+    endpoint = "TODO";
     payload = {
         "includeQRCode": true,
         "authority": "did:web:auxiliary.ipt.ch",
@@ -78,7 +78,7 @@ app.post("/request-verification", async (req, res) => {
             "clientName": "VerifizierBAR Verifier"
         },
         "callback": {
-            "url": "https://59ce-193-223-48-6.eu.ngrok.io/verification-callback",
+            "url": "TODO",
             "state": ""
         },
         "requestedCredentials": [
