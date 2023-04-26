@@ -23,7 +23,7 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
 1. `git clone https://github.com/Gerdome/-2023-04-vis-workshop.git`
 2. `git checkout workshop`
 2. Im Frontend Ordner (vis-workshop-frontend): `npm install` & `npm start` => Damit läuft die Frontend App auf `localhost:3000`
-3. Im Backend Ordner (vis-workshop-backend): `.env` file erstellen und anpassen (Siehe Slides)
+3. Im Backend Ordner (vis-workshop-backend): `.env_template` in `.env` umbenennen und Client Secret vervollständigen (Siehe Slides)
 
 4. Im Backend Ordner (vis-workshop-backend): `npm install` & `node app.js` => Damit läuft die Backend App auf `localhost:5050`
 5. Verifiziere das Backend Server lokal läuft: Im beliebigen Browser `localhost:5050/ping` öffnen. Es sollte `{"ping":true}` zurück gegeben werden.
