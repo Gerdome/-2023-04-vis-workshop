@@ -35,14 +35,21 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
  ## Challenges
 
 ### Erstelle dir deine eigene Verifiable ID 
-1. Vervollständige im Backend Projekt den `/request-credential` Endpunkt
-	- Payload entsprechend der [Issuance API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/issuance-request-api) anpassen:
-	- Callback URL soll auf den bereits implementieren Endpoint im Backend `/issuance-callback` zeigen (Achtung: NGROK URL benötigt)
-2. Vervollständige im Frontend Projekt die `getCredential` Methode
-	- Backend Endpunkt ersetzen (Tipp: Es muss der Endpunkt aufgerufen werden. den ihr gerade angepasst habt)
-	- HTTP Methode, Headers und Body ersetzen (Tipp: Im Backend ist bereits angegeben welche Claims der Endpunkt erwartet)
-3. In der Web App auf den `Issue ID` Button klicken, beliebige Informationen in das Formular eintragen und abschicken. Falls erfolgreich sollte nun ein QR Code angezeigt werden. 
-4. QR Code mit der Microsoft Authenticator App scannen und ID in der App erstellen. 
+1. Vervollständige im Backend Projekt im `app.js` den `/request-credential` Endpunkt indem du den Payload entsprechend der [Issuance API Spezifikation](https://learn.microsoft.com/en-us/azure/active-directory/verifiable-credentials/issuance-request-api) anpasst:
+    - Endpoint muss auf die Entra Issuance API URL zeigen
+    - Callback URL soll auf den bereits implementieren Endpoint im Backend `/issuance-callback` zeigen (Achtung: NGROK URL benötigt)
+    - Claims die vom Frontend übergeben werden müssen an die Entra API weitergeleitet werden:
+      - given-name
+      - last_name
+      - age
+2. WICHTIG: Sobald du Änderungen am Backend vornimmst muss der Server neu gestartet werden: `ctrl + c` & `node app.js`
+3. Vervollständige im Frontend Projekt im `Form.js` die `getCredential()` Methode
+    - Backend Endpunkt anpassen (Tipp: Es muss der Endpunkt aufgerufen werden, den ihr gerade angepasst habt)
+    - HTTP Methode anpassen
+    - Body anpassen (Tipp: Es müssen die gleichen Claims im Body übergeben werden, die dann vom Backend weiter an die Entra API geschickt werden)
+4. In der Web App auf den `Issue ID` Button klicken, beliebige Informationen in das Formular eintragen und abschicken. Falls erfolgreich sollte nun ein QR Code angezeigt werden. 
+5. QR Code mit der Microsoft Authenticator App scannen und ID in der App erstellen. 
+6. Sicherstellen, dass ID die Informationen anzeigt, die gerade im Formular eingegeben wurden.
 
 ### Verifiziere ausgestellte IDs
 1. Vervollständige im Backend Projekt den `/request-verification` Endpunkt

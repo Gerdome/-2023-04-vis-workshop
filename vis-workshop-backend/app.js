@@ -27,11 +27,11 @@ app.use(bodyParser.json());
 
 // TODO
 app.post("/request-credential", async (req, res) => {
-    endpoint = "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createIssuanceRequest";
+    endpoint = "TODO";
     payload = {
         "includeQRCode": true,
         "callback": {
-            "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/issuance-callback",
+            "url": "TODO",
             "state": ""
         },
         "authority": "did:web:auxiliary.ipt.ch",
@@ -41,13 +41,7 @@ app.post("/request-credential", async (req, res) => {
         "type": "VerifizierBAR",
         "manifest": "https://verifiedid.did.msidentity.com/v1.0/tenants/a9080dcf-8589-4cb6-a2e2-21398dc6c671/verifiableCredentials/contracts/0c035ed1-2e13-c786-a03a-eee4459541dd/manifest",
         "claims": {
-            "given_name": req.body.firstName,
-            "last_name": req.body.lastName,
-            "age": req.body.age
-        },
-        "pin": {
-            "value": req.body.pin.toString(),
-            "length": 4
+            "TODO": "TODO"
         }
     };
 
@@ -84,7 +78,7 @@ app.post("/request-verification", async (req, res) => {
             "clientName": "VerifizierBAR Verifier"
         },
         "callback": {
-            "url": "https://c54d-2a04-ee41-3-2369-6896-1082-704b-3b0b.ngrok-free.app/verification-callback",
+            "url": "https://59ce-193-223-48-6.eu.ngrok.io/verification-callback",
             "state": ""
         },
         "requestedCredentials": [

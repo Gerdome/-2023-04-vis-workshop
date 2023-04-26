@@ -35,24 +35,21 @@ export function Form() {
   
     // TODO
     async function getCredential() {
-      let pin = Math.floor(1000 + Math.random() * 9000);
       try {
-        const response = await fetch("http://localhost:5050/request-credential", {
-          method: "POST",
+        const response = await fetch("TODO", {
+          method: "TODO",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "firstName": firstName,
-            "lastName": lastName,
-            "age": age,
-            "pin": pin
+            "TODO": "TODO",
+            "TODO": "TODO",
+            "TODO": "TODO",
           })
         });
   
         const result = await response.json();
         setQrCodeString(result.qrCode);
-        setPin(pin);
       } catch (error) {
         console.error("Error:", error);
       }
