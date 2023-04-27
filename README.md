@@ -39,7 +39,7 @@ In diesem Workshop lernt ihr Hands-On wie man mithilfe von Microsoft Entra Verif
     - Endpoint muss auf die Entra Issuance API URL zeigen
     - Callback URL soll auf den bereits implementieren Endpoint im Backend `/issuance-callback` zeigen (Achtung: NGROK URL benötigt)
     - Claims die vom Frontend übergeben werden müssen an die Entra API weitergeleitet werden:
-      - given-name
+      - given_name
       - last_name
       - age
 2. WICHTIG: Sobald du Änderungen am Backend vornimmst muss der Server neu gestartet werden: `ctrl + c` & `node app.js`
